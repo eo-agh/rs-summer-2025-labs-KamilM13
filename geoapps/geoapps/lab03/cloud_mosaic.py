@@ -6,8 +6,7 @@ def create_cloud_free_mosaic(aoi, start_date, end_date):
     image_collection = ee.ImageCollection('COPERNICUS/S2_HARMONIZED') \
     .filterDate(start_date, end_date) \
     .filterBounds(aoi) \
-    .sort('CLOUDY_PIXEL_PERCENTAGE') \
-    .first()
+
 
     def cloud_mask(image):
         qa_band = image.select('QA60')
@@ -18,7 +17,5 @@ def create_cloud_free_mosaic(aoi, start_date, end_date):
     
     m_c = image_collection.map(cloud_mask)
     mosaic = m_c.median().clip(aoi)
-
-    print('work goober')
 
     return mosaic
