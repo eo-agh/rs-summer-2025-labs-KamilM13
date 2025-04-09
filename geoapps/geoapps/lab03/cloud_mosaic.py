@@ -3,9 +3,9 @@ import ee
 ee.Initialize(project='ee-kamilmolo13')
 
 def create_cloud_free_mosaic(aoi, start_date, end_date):
-    image_collection = ee.ImageCollection('COPERNICUS/S2_HARMONIZED') \
+    image_collection = ee.ImageCollection('COPERNICUS/S2') \
     .filterDate(start_date, end_date) \
-    .filterBounds(aoi) \
+    .filterBounds(aoi)
 
 
     def cloud_mask(image):
