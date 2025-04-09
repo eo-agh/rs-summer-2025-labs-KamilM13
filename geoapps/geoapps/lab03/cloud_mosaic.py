@@ -3,7 +3,7 @@ import ee
 ee.Initialize(project='ee-kamilmolo13')
 
 def create_cloud_free_mosaic(aoi, start_date, end_date):
-    image_collection = ee.ImageCollection('COPERNICUS/S2') \
+    image_collection = ee.ImageCollection('COPERNICUS/S2_HARMONIZED') \
     .filterDate(start_date, end_date) \
     .filterBounds(aoi) \
     .sort('CLOUDY_PIXEL_PERCENTAGE') \
@@ -20,4 +20,7 @@ def create_cloud_free_mosaic(aoi, start_date, end_date):
     #mosaic = m_c.median().clip(aoi)
     mosaic = image_collection
 
-    return mosaic
+    print('goober')
+
+    #return mosaic
+    return 0
