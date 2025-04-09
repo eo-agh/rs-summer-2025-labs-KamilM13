@@ -16,11 +16,9 @@ def create_cloud_free_mosaic(aoi, start_date, end_date):
         c_mask = qa_band.bitwiseAnd(cloud_bit).eq(0).And(qa_band.bitwiseAnd(cirrus_bit).eq(0))
         return image.updateMask(c_mask).copyProperties(image, image.propertyNames())
     
-    #m_c = image_collection.map(cloud_mask)
-    #mosaic = m_c.median().clip(aoi)
-    mosaic = image_collection
+    m_c = image_collection.map(cloud_mask)
+    mosaic = m_c.median().clip(aoi)
 
-    print('goober')
+    print('work goober')
 
-    #return mosaic
-    return 0
+    return mosaic
