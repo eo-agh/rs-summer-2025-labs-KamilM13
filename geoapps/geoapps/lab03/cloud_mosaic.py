@@ -1,5 +1,6 @@
 import ee
 
+ee.Authenticate()
 ee.Initialize(project='ee-kamilmolo13')
 
 def create_cloud_free_mosaic(aoi, start_date, end_date):
